@@ -120,6 +120,17 @@ class PowerLawRealization(PowerLaw):
             self.pl_index,
         ) = self.modulate_small_scales(small_scale, synalm_lmax, seeds)
 
+    def draw_mff_realization(self, lamb, L_plus, H_plus, synalm_max=None, seeds=None):
+        if seeds is None:
+            seeds = (None, None)
+        if synalm_lmax is None:
+            synalm_lmax = int(min(16384, 2.5 * self.nside))
+        output_lmax = int(min(synalm_lmax, 2.5 * self.nside))
+        np.random.seed(seeds[0])
+
+        ## Generate correlated Gaussian noise
+        
+
     def draw_mff_realization(self, lamb, skew, synalm_lmax=None, seeds=None):
         if seeds is None:
             seeds = (None, None)
